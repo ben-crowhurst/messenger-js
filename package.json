@@ -1,0 +1,28 @@
+{
+    "name": "messenger-js",
+    "version": "0.1.0",
+    "description": "EMail Gateway with service provider failover.",
+    "main": "routes/index.js",
+    "scripts": {
+        "start": "node routes/index.js"
+    },
+    "dependencies": {
+        "express": "^4.13.3"
+    },
+    "devDependencies": {
+        "grunt": "^1.0.1",
+        "grunt-contrib-jshint": "^1.1.0",
+        "grunt-jsbeautifier": "^0.2.13"
+    },
+    "engines": {
+        "node": "6.7.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ben-crowhurst/messenger-js"
+    },
+    "keywords": [ "node", "email", "express" ],
+    "author": "Ben Crowhurst",
+    "contributors": [],
+    "license": "MIT"
+}
