@@ -2,13 +2,19 @@
 
 const parser = require('body-parser');
 const router = require('express')();
-router.use(parser.json());
+router.use(parser.json({
+    type: 'application/json'
+}));
+router.use(parser.text({
+    type: 'text/html'
+}));
 
 const cache = require('node-persist');
 
 const messageController = require('./controllers/message').build(router, cache);
 const messagesController = require('./controllers/messages').build(router, cache);
 const attachmentController = require('./controllers/attachment').build(router, cache);
+const attachmentsController = require('./controllers/attachments').build(router, cache);
 
 const service = router.listen(8080, () => {
     cache.init().then(() => {
