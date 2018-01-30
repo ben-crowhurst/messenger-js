@@ -1,5 +1,6 @@
 'use strict';
 
+const configuration = require('./configuration');
 const parser = require('body-parser');
 const router = require('express')();
 router.use(parser.json({
@@ -16,11 +17,11 @@ const messagesController = require('./service/messagesController').build(router,
 const attachmentController = require('./service/attachmentController').build(router, cache);
 const attachmentsController = require('./service/attachmentsController').build(router, cache);
 
-const service = router.listen(8080, () => {
+const service = router.listen(configuration.port, () => {
     cache.init().then(() => {
-        const configuration = service.address();
-        const port = configuration.port;
-        const host = (configuration.address === '::' ? 'localhost' : configuration.address);
+        const runtime = service.address();
+        const port = runtime.port;
+        const host = (runtime.address === '::' ? 'localhost' : runtime.address);
         console.log('listening at http://%s:%s', host, port);
     });
 });
