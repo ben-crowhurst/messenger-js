@@ -1,7 +1,8 @@
 'use strict';
 
 class MessageController {
-    constructor(router) {
+    constructor(router, cache) {
+        this.cache = cache;
         this.router = router;
         this.registerRoutes();
     }
@@ -11,10 +12,16 @@ class MessageController {
     }
 
     read(request, response) {
-        response.status(404).send();
+        this.cache.get(request.params.key, (error, message) => {
+            if (!message) {
+                response.status(404).send();
+            } else {
+                response.status(200).send(message);
+            }
+        });
     }
 }
 
-module.exports.build = (router) => {
-    return new MessageController(router);
+module.exports.build = (router, cache) => {
+    return new MessageController(router, cache);
 };

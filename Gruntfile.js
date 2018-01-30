@@ -15,6 +15,7 @@ module.exports = function(grunt) {
                     process: true,
                     it: true,
                     describe: true,
+                    before: true,
                     beforeEach: true,
                     afterEach: true
                 }
