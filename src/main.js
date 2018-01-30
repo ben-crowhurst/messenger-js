@@ -8,6 +8,7 @@ const cache = require('node-persist');
 
 const messageController = require('./controllers/message').build(router, cache);
 const messagesController = require('./controllers/messages').build(router, cache);
+const attachmentController = require('./controllers/attachment').build(router, cache);
 
 const service = router.listen(8080, () => {
     cache.init().then(() => {
