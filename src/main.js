@@ -1,7 +1,7 @@
 'use strict';
 
-const router = require('./router');
 const cache = require('./data/cache');
+const router = require('./service/router');
 const configuration = require('./configuration');
 
 const service = router.listen(configuration.port, () => {
