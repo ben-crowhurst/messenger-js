@@ -2,15 +2,16 @@
   "name": "messenger-js",
   "version": "0.1.0",
   "description": "EMail Gateway with service provider failover.",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node src/main.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.13.3"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "grunt": "^1.0.1",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-jsbeautifier": "^0.2.13"
