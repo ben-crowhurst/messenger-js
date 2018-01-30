@@ -4,6 +4,7 @@
   "description": "EMail Gateway with service provider failover.",
   "main": "src/main.js",
   "scripts": {
+    "test": "grunt",
     "start": "node src/main.js"
   },
   "dependencies": {
