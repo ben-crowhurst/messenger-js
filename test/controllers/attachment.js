@@ -24,7 +24,7 @@ describe('routes : attachments/:key', () => {
     });
 
     describe('DELETE /attachments/:key', () => {
-        it('should respond with 204 when no resource is found.', (done) => {
+        it('should respond with 204 (No Content) when no resource is found.', (done) => {
             chai.request(service)
                 .delete('/attachments/1234567890')
                 .end((error, response) => {
@@ -34,7 +34,7 @@ describe('routes : attachments/:key', () => {
                 });
         });
 
-        it('should respond with 204 when a resource is found.', (done) => {
+        it('should respond with 204 (No Content) when a resource is found.', (done) => {
             cache.set('123456', 'hjhjhjh', (error) => {
                 chai.request(service)
                     .delete('/attachments/123456')

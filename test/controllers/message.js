@@ -24,7 +24,7 @@ describe('routes : messages/:key', () => {
     });
 
     describe('GET /messages/:key', () => {
-        it('should respond with 404 when a resource is missing.', (done) => {
+        it('should respond with 404 (Not Found) when a resource is missing.', (done) => {
             chai.request(service)
                 .get('/messages/09876543')
                 .end((error, response) => {
@@ -34,7 +34,7 @@ describe('routes : messages/:key', () => {
                 });
         });
 
-        it('should respond with 200 when a resource is found.', (done) => {
+        it('should respond with 200 (OK) when a resource is found.', (done) => {
             cache.set('123456', 'hjhjhjh', (error) => {
                 chai.request(service)
                     .get('/messages/123456')

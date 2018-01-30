@@ -24,7 +24,7 @@ describe('routes : /messages', () => {
     });
 
     describe('POST /messages', () => {
-        it('should respond with 201 and the message should be persisted.', (done) => {
+        it('should respond with 201 (Created) and the message should be persisted.', (done) => {
             chai.request(service)
                 .post('/messages')
                 .send({
@@ -48,7 +48,7 @@ describe('routes : /messages', () => {
                 });
         });
 
-        it('should respond with 400 when mandatory fields are missing.', (done) => {
+        it('should respond with 400 (Bad Request) when mandatory fields are missing.', (done) => {
             chai.request(service)
                 .post('/messages')
                 .send({
@@ -66,7 +66,7 @@ describe('routes : /messages', () => {
     });
 
     describe('GET /messages', () => {
-        it('should respond with 200 and body content when no resources are found.', (done) => {
+        it('should respond with 200 (OK) and body content when no resources are found.', (done) => {
             chai.request(service)
                 .get('/messages')
                 .end((error, response) => {
@@ -77,7 +77,7 @@ describe('routes : /messages', () => {
                 });
         });
 
-        it('should respond with 200 and body content when a resource is found.', (done) => {
+        it('should respond with 200 (OK) and body content when a resource is found.', (done) => {
             cache.set('123456', 'hjhjhjh', (error) => {
                 chai.request(service)
                     .get('/messages')
