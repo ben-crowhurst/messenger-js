@@ -8,7 +8,7 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 const cache = require('node-persist');
-const service = require('../../src/main');
+const service = require('../src/main');
 
 describe('routes : /attachments', () => {
     before((done) => {

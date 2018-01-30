@@ -11,10 +11,10 @@ router.use(parser.text({
 
 const cache = require('node-persist');
 
-const messageController = require('./controllers/message').build(router, cache);
-const messagesController = require('./controllers/messages').build(router, cache);
-const attachmentController = require('./controllers/attachment').build(router, cache);
-const attachmentsController = require('./controllers/attachments').build(router, cache);
+const messageController = require('./service/messageController').build(router, cache);
+const messagesController = require('./service/messagesController').build(router, cache);
+const attachmentController = require('./service/attachmentController').build(router, cache);
+const attachmentsController = require('./service/attachmentsController').build(router, cache);
 
 const service = router.listen(8080, () => {
     cache.init().then(() => {
