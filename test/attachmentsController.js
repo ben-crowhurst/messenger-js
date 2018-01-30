@@ -38,19 +38,16 @@ describe('routes : /attachments', () => {
         });
 
         it('should respond with 415 (Unsupported Media Type) and the attachment should not be persisted.', (done) => {
-            // Not able to remove 'Content-Type' header value from the request.
-            // Issue raised with vendors at https://github.com/chaijs/chai-http/issues/200
-
-            // chai.request(service)
-            //     .post('/attachments')
-            //     .set('Content-Type', null)
-            //     .send('Attachment Data Here 12334566')
-            //     .end((error, response) => {
-            //         should.exist(error);
-            //         response.status.should.equal(415);
-            //         cache.length().should.equal(0);
-            done();
-            //     });
+            chai.request(service)
+                .post('/attachments')
+                .send('Attachment Data Here 12334566')
+                .unset('Content-Type')
+                .end((error, response) => {
+                    should.exist(error);
+                    response.status.should.equal(415);
+                    cache.length().should.equal(0);
+                    done();
+                });
         });
 
         it('should respond with 400 (Bad Request) when no body is present and should not be persisted.', (done) => {
