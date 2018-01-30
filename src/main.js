@@ -1,9 +1,13 @@
 'use strict';
 
+const parser = require('body-parser');
 const router = require('express')();
+router.use(parser.json());
+
 const cache = require('node-persist');
 
 const messageController = require('./controllers/message').build(router, cache);
+const messagesController = require('./controllers/messages').build(router, cache);
 
 const service = router.listen(8080, () => {
     cache.init().then(() => {
