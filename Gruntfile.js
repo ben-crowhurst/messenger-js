@@ -12,8 +12,11 @@ module.exports = function(grunt) {
                     module: true,
                     console: true,
                     require: true,
+                    process: true,
                     it: true,
                     describe: true,
+                    beforeEach: true,
+                    afterEach: true
                 }
             }
         },
