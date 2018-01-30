@@ -6,15 +6,18 @@ module.exports = function(grunt) {
         jshint: {
             files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
             options: {
+                esversion: 6,
                 globalstrict: true,
                 globals: {
                     module: true,
                     console: true,
-                    require: true
+                    require: true,
+                    it: true,
+                    describe: true,
                 }
             }
         },
-        jsbeautifier : {
+        jsbeautifier: {
             files : ['src/**/*.js', 'test/**/*.js'],
             options : {
                 js: {
@@ -38,11 +41,25 @@ module.exports = function(grunt) {
                     endWithNewline: true
                 }
             }
-        }
+        },
+        mochaTest: {
+            test: {
+              options: {
+                reporter: 'spec',
+                captureFile: 'results.txt',
+                quiet: false,
+                clearRequireCache: false,
+                clearCacheFilter: (key) => true,
+                noFail: false
+              },
+              src: ['test/**/*.js']
+            }
+          }
     });
 
+    grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
-    grunt.registerTask('default', ['jsbeautifier', 'jshint']);
+    grunt.registerTask('default', ['jsbeautifier', 'jshint', 'mochaTest']);
 };
