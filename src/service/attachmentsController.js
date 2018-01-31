@@ -15,7 +15,6 @@ class AttachmentsController {
 
     create(request, response) {
         let contentType = request.get('Content-Type');
-        console.log(contentType);
         if (!contentType || !contentType.length) {
             return response.status(415).send();
         }
