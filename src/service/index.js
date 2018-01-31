@@ -1,6 +1,6 @@
 'use strict';
 
-const cache = require('../data/cache');
+const cache = require('../data');
 const parser = require('body-parser');
 const router = require('express')();
 router.use(parser.json({

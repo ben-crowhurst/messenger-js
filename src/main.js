@@ -1,11 +1,11 @@
 'use strict';
 
 const cache = require('./data');
+const router = require('./service');
 const dispatch = require('./dispatch');
 const providers = require('./providers');
 const configuration = require('./configuration');
 
-const router = require('./service/router');
 router.on('message-created', (messageKey) => {
     let copyOfProviders = providers.slice();
     dispatch(messageKey, copyOfProviders, cache);
