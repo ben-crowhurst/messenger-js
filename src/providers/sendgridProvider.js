@@ -5,7 +5,7 @@ class SendGridProvider {
 
     send(message) {
         return new Promise((resolve, reject) => {
-            reject("Not Implemented");
+            reject('Not Implemented.');
         });
     }
 }
