@@ -5,6 +5,7 @@ const FormData = require('form-data');
 
 class MailGunProvider {
     constructor(configuration = {}) {
+        this.options = {};
         this.options.method = 'POST';
         this.options.port = configuration.port;
         this.options.path = configuration.path;
@@ -40,13 +41,14 @@ class MailGunProvider {
                 console.log('Error', error);
             });
 
-            data.append('from', 'Mailgun Sandbox <postmaster@sandboxe91c677a76e7441891626d0b2fd6a66e.mailgun.org>');
-            data.append('to', 'ben.crowhurst@infomedia.com.au');
+            data.append('from', 'ben.crowhurst@corvusoft.co.uk');
+            data.append('to', 'ben.crowhurst@corvusoft.co.uk');
+            //data.append('cc', 'ben.crowhurst@corvusoft.co.uk');
+            //data.append('bcc', 'ben.crowhurst@corvusoft.co.uk');
             data.append('subject', 'Hello Ben Crowhurst');
             data.append('text', 'Congratulations Ben Crowhurst, you just sent an email with Mailgun! You are truly awesome!');
             data.pipe(request);
 
-            console.log('data away');
             request.end();
         });
     }
