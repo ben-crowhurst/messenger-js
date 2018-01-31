@@ -24,15 +24,14 @@ class MessagesController {
             response.status(400).send();
         }
 
-        let key = "";
+        let key = keyGenerator();
         if (message.meta && message.meta.key) {
             key = message.meta.key;
-        } else {
-            key = keyGenerator();
         }
 
         this.cache.set(key, message).then(() => {
             response.status(201).send();
+            this.router.emit('message-created', key);
         });
     }
 
