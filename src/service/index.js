@@ -10,9 +10,9 @@ router.use(parser.text({
     type: 'text/html'
 }));
 
-const messageController = require('./messageController').build(router, cache);
-const messagesController = require('./messagesController').build(router, cache);
-const attachmentController = require('./attachmentController').build(router, cache);
-const attachmentsController = require('./attachmentsController').build(router, cache);
+const messageController = require('./message-controller').build(router, cache);
+const messagesController = require('./messages-controller').build(router, cache);
+const attachmentController = require('./attachment-controller').build(router, cache);
+const attachmentsController = require('./attachments-controller').build(router, cache);
 
 module.exports = router;
