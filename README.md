@@ -1,8 +1,13 @@
 # messenger-js
-Email messenger with backend provider fail-over.
+Email messenger with backend provider fail-over. See issues for outstanding work items.
 
+# dependencies
+ - NPM 3
+ - NodeJS 6
+ 
 # build
 ```
+npm install -g grunt-cil
 npm install
 npm test
 npm start
