@@ -23,15 +23,15 @@ const send = (messageKey, providers, cache, message) => {
 
 const dispatch = (messageKey, providers, cache) => {
     cache.get(messageKey).then((message) => {
-        if (!message) {
-            return console.log('[Dispatch] Failed to locate message within the cache.');
-        }
+            if (!message) {
+                return console.log('[Dispatch] Failed to locate message within the cache.');
+            }
 
-        send(messageKey, providers, cache, message);
-    })
-    .cache((error) => {
-        console.log('[Dispatch] Failed to load message ', messageKey);
-    });
+            send(messageKey, providers, cache, message);
+        })
+        .cache((error) => {
+            console.log('[Dispatch] Failed to load message ', messageKey);
+        });
 };
 
 module.exports = dispatch;

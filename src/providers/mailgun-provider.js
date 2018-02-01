@@ -41,12 +41,25 @@ class MailGunProvider {
                 console.log('Error', error);
             });
 
-            data.append('from', 'ben.crowhurst@corvusoft.co.uk');
-            data.append('to', 'ben.crowhurst@corvusoft.co.uk');
-            //data.append('cc', 'ben.crowhurst@corvusoft.co.uk');
-            //data.append('bcc', 'ben.crowhurst@corvusoft.co.uk');
-            data.append('subject', 'Hello Ben Crowhurst');
-            data.append('text', 'Congratulations Ben Crowhurst, you just sent an email with Mailgun! You are truly awesome!');
+            for (let recipient of message.data.to) {
+                data.append('to', recipient);
+            }
+
+            if (message.data.cc) {
+                for (let recipient of message.data.cc) {
+                    data.append('cc', recipient);
+                }
+            }
+
+            if (message.data.bcc) {
+                for (let recipient of message.data.bcc) {
+                    data.append('bcc', recipient);
+                }
+            }
+
+            data.append('from', message.data.from);
+            data.append('text', message.data.message);
+            data.append('subject', message.data.subject);
             data.pipe(request);
 
             request.end();
